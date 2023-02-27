@@ -1,0 +1,16 @@
+name: zoidberg_env
+channels:
+  - defaults
+dependencies:
+  - python=3.9
+  - numpy
+  - pip
+  - graphviz
+  - matplotlib
+  - notebook
+  - seaborn
+  - flake8
+  - python-dotenv[version='>=0.5.1']
+  - pandas
+  - tensorflow
+  - scikit-learn
