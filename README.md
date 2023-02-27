@@ -75,7 +75,7 @@ Go on your browser to work on those jupyters notebooks
 
 # Report 
 
-The document in the report folder is written in Latex, we use [Overleaf](https://www.overleaf.com/). Please ask us if you want access to is tex version.  
+The document in the report folder is written in Latex, we use [Overleaf](https://www.overleaf.com/). Please ask us if you want access to its tex version.  
 Access : [https://www.overleaf.com/project/63fcbca4e88c8a6d5976e9c6](https://www.overleaf.com/project/63fcbca4e88c8a6d5976e9c6)
 
 # Deployment in rust

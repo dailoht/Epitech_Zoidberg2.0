@@ -95,6 +95,7 @@ target/
 # exclude data from source control by default
 data/processed/
 data/raw/
+!data/raw/.gitkeep
 
 ################################################################
 # Latex                                                        #
