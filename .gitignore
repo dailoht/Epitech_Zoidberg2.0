@@ -93,9 +93,10 @@ target/
 .zoideberg_env/
 
 # exclude data from source control by default
-data/processed/
-data/raw/
+data/raw/*
 !data/raw/.gitkeep
+data/processed/*
+!data/processed/.gitkeep
 
 ################################################################
 # Latex                                                        #
