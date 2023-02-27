@@ -24,7 +24,7 @@ conda -V
 
 ### Check-out the git repository
 
-Once Miniconda is ready, checkout the course repository and proceed with setting up the environment:
+Once Miniconda is ready, clone the repository :
 
 ```bash
 git clone git@github.com:EpitechMscProPromo2024/T-DEV-810-PAR_10.git
