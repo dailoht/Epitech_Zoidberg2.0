@@ -61,6 +61,12 @@ If you want to see this virtual environment in the kernels registered by jupyter
 ```bash
 ipython kernel install --user --name=zoidberg_env
 ```
+## Downloading data
+
+Next step is to download data of this project and move the uncompressed folder `chest_Xray` in `data/raw`:
+```bash
+mv <path of the directory>/chest_Xray data/raw
+```
 
 ## Start Jupyter Notebook or JupyterLab
 
