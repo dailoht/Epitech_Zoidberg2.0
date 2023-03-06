@@ -6,6 +6,7 @@ PROJECT_ROOT_DIR = Path(__file__).parents[2]
 DATA_ROOT_DIR = PROJECT_ROOT_DIR / "data"
 MODEL_ROOT_DIR = PROJECT_ROOT_DIR / "model"
 SRC_ROOT_DIR = PROJECT_ROOT_DIR / "src"
+RESOURCE_DIR = PROJECT_ROOT_DIR / "report" / "resources"
 
 # path to fetch data
 SOURCE_DIR = DATA_ROOT_DIR / "raw" / "chest_Xray"
@@ -22,7 +23,8 @@ class ProjectInfo():
         self.root_dir = PROJECT_ROOT_DIR
         self.data_dir = DATA_ROOT_DIR
         self.model_dir = MODEL_ROOT_DIR
-        self.srcipts_dir = SRC_ROOT_DIR
+        self.script_dir = SRC_ROOT_DIR
+        self.resource_dir = RESOURCE_DIR
 
 
 # Functions for fetching data
