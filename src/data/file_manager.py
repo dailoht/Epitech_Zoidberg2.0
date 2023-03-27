@@ -15,7 +15,7 @@ class FileManager:
     Class that provides project information :
         - principal paths
     """
-    def __init__(self, colab=False) -> None:
+    def __init__(self) -> None:
         self.root_dir = PROJECT_ROOT_DIR
         self.data_dir = DATA_ROOT_DIR
         self.model_dir = MODEL_ROOT_DIR
@@ -23,7 +23,6 @@ class FileManager:
         self.resource_dir = RESOURCE_DIR
         self.raw_data_subdir = self.data_dir / 'raw' / 'chest_Xray'
         self.interim_data_subdir = self.data_dir / 'interim' / 'full'
-        self.colab = colab
 
     def __create_folders(self, exist_ok=True):
         """_summary_
