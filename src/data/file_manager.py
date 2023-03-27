@@ -119,12 +119,17 @@ class FileManager:
             
         if not self.raw_data_subdir.is_dir():
             print("Uncompressing zip file ...")
-            zip_file_path = next(Path(self.data_dir / "raw").glob("*.zip"))
-            with zipfile.ZipFile(zip_file_path, 'r') as file:
-                file.extractall(path=Path(self.data_dir / "raw"))
-            zip_file_path.unlink()
-            unziped_dir = next(Path(self.data_dir / "raw").glob("*/"))
-            unziped_dir.rename(self.raw_data_subdir)
+            for zip_file_path in Path(self.data_dir / "raw").glob("*.zip"):
+                with zipfile.ZipFile(zip_file_path, 'r') as file:
+                    file.extractall(path=Path(self.data_dir / "raw"))
+            for item in Path(self.data_dir / "raw").glob("*"):
+                if item.is_dir() and 'chest_xray' in item.name.lower():
+                    item.rename(self.raw_data_subdir)
+                elif item.name != '.gitkeep':
+                    if item.is_dir():
+                        shutil.rmtree(str(item))
+                    elif item.is_file():
+                        item.unlink()
             
                     
         for item in self.raw_data_subdir.glob('*'):
