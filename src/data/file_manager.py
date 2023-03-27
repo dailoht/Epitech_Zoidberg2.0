@@ -112,7 +112,10 @@ class FileManager:
         folder.
         """
         if self.colab:
-            from google.colab import files
+            try:
+                from google.colab import files
+            except:
+                raise ValueError('Could not found google.colab')
             
             print("Upload the data zip file")
             filename_dist = self.data_dir / "raw" / "chest_xray.zip"
