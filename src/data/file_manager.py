@@ -111,15 +111,6 @@ class FileManager:
         Final function for fetching data from zip file to full
         folder.
         """
-        if self.colab:
-            try:
-                from google.colab import files
-            except:
-                raise ValueError('Could not found google.colab')
-            
-            print("Upload the data zip file")
-            filename_dist = self.data_dir / "raw" / "chest_xray.zip"
-            files.upload_file(filename_dist.as_posix())
             
         if self.check_full_dataset(print_result=False):
             print("Full dataset already created")
