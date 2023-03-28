@@ -5,11 +5,9 @@ The project has 2 parts :
 - Analyze and model building in python. All results can be shown in notebooks
 - Model deployment
 
-# 
-
 # Visualization with Notebook
 
-Notebooks can be run either with [Google Colab](https://colab.research.google.com/) or in a local environment. Steps below are provided to run them locally. If you want to use Colab, you only need to clone this repo on Colab and upload needed data [Section 3.1](#31-downloading-data).
+Notebooks can be run either with [Google Colab](https://colab.research.google.com/) or in a local environment. Steps below are provided to run them locally. If you want to use Colab, you only need to clone this repo on Colab and upload needed data [Section 4](#31-downloading-data).
 
 
 You are going to need python 3.9 and [Anaconda](https://www.anaconda.com/) or Miniconda which is a minimal version of Anaconda. Below, we provide instruction for Miniconda.
@@ -66,16 +64,16 @@ If you want to see this virtual environment in the kernels registered by jupyter
 ```bash
 ipython kernel install --user --name=zoidberg_env
 ```
-## 3.1 Downloading data
+## 4. Downloading data
 
 Next step is to download data. Images are avalaible on Kaggle [here](https://www.kaggle.com/datasets/paultimothymooney/chest-xray-pneumonia).
 
-Then you have to move the folder `chest_Xray` in `data/raw`:
+Then you have to move either zip file or folder `chest_Xray` in `data/raw`:
 ```bash
 mv <path of the directory>/chest_Xray data/raw
 ```
 
-## 3.2 Start Jupyter Notebook or JupyterLab
+## 5. Start Jupyter Notebook or JupyterLab
 
 Finally, start from terminal :
 ```bash
