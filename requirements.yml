@@ -13,4 +13,5 @@ dependencies:
   - python-dotenv[version='>=0.5.1']
   - pandas
   - tensorflow
+  - tensorflow-addons
   - scikit-learn
