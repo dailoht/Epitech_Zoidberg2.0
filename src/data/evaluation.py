@@ -322,14 +322,14 @@ class Evaluation():
             for name, value in metrics_avg_dict.items():
                 if name == 'Support':
                     row_avg_fmt = "{:>{width}s} " + " {:>9}" * 3 + " {:>9}\n"
-            report += row_avg_fmt.format(name,
-                                         "",
-                                         "",
-                                         "",
-                                         value,
-                                         width=width,
-                                         digits=digits
-                                         )
+                report += row_avg_fmt.format(name,
+                                             "",
+                                             "",
+                                             "",
+                                             value,
+                                             width=width,
+                                             digits=digits
+                                             )
 
             print(report)
 

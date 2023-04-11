@@ -5,6 +5,43 @@ The project has 2 parts :
 - Analyze and model building in python. All results can be shown in notebooks
 - Model deployment
 
+# Architecture
+
+Th directory structure below is widely inspired by the [cookiecutter-data-science](https://github.com/drivendata/cookiecutter-data-science) project.
+
+```
+.
+├── LICENSE
+├── Makefile
+├── README.md
+├── data
+│   ├── interim         <- Intermediate data that has been transformed
+│   ├── processed       <- Final, canonical data for modeling
+│   └── raw             <- Original data dump
+│
+├── deployment          <- API & Front for model deployment
+│
+├── models              <- Trained models
+│
+├── notebooks
+│   ├── data_processing <- Jupyter notebooks for data analysis and
+│                          preprocessing
+│   ├── models          <- Jupyter notebooks to train models
+│   └── visualization   <- Jupyter notebooks to make some useful
+│                          visualizations
+│
+├── report              <- Generated report
+│
+├── requirements.yml    <- Requirements file for reproducing the analysis
+│                          environment
+│
+├── src                 <- Source code for use in this project
+    ├── data            <- Scripts to handle data (download, metrics,
+    │                      tensorflow)
+    ├── tests           <- Unit testing
+    └── visualization   <- Scripts to help visualizations
+```
+
 # Visualization with Notebook
 
 Notebooks can be run either with [Google Colab](https://colab.research.google.com/) or in a local environment. Steps below are provided to run them locally. If you want to use Colab, you only need to clone this repo on Colab and upload needed data [Section 4](#31-downloading-data).
