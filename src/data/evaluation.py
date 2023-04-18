@@ -135,9 +135,7 @@ class Evaluation():
                 ),
             'FPR normal': FPRNormal(labels=tf.constant(self.labels)),
         }
-        self.loss_function = tf.keras.losses.CategoricalCrossentropy(
-            from_logits=True
-            )
+        
         self.training_metrics = []
 
     def __decode_one_hot(self, y_true, y_pred):
@@ -206,6 +204,8 @@ class Evaluation():
         Returns:
             list: A list of the selected training metrics.
         """
+        self.training_metrics = []
+        
         if metrics == 'BASE':
             self.training_metrics.append(self.full_metrics['MCC'])
 

@@ -13,7 +13,7 @@ import zipfile
 # Common project paths
 PROJECT_ROOT_DIR = Path(__file__).parents[2]
 DATA_ROOT_DIR = PROJECT_ROOT_DIR / "data"
-MODEL_ROOT_DIR = PROJECT_ROOT_DIR / "model"
+MODEL_ROOT_DIR = PROJECT_ROOT_DIR / "models"
 SRC_ROOT_DIR = PROJECT_ROOT_DIR / "src"
 RESOURCE_DIR = PROJECT_ROOT_DIR / "report" / "resources"
 
