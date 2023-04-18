@@ -25,7 +25,7 @@ Th directory structure below is widely inspired by the [cookiecutter-data-scienc
 │
 ├── notebooks
 │   ├── data_processing <- Jupyter notebooks for data analysis and
-│                          preprocessing
+│   │                      preprocessing
 │   ├── models          <- Jupyter notebooks to train models
 │   └── visualization   <- Jupyter notebooks to make some useful
 │                          visualizations

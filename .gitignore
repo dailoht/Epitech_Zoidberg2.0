@@ -86,6 +86,10 @@ target/
 *.swp
 *.swo
 
+# Colab
+.config/
+sample_date/
+
 # Mypy cache
 .mypy_cache/
 
