@@ -103,6 +103,8 @@ data/processed/*
 !data/processed/.gitkeep
 data/interim/*
 !data/interim/.gitkeep
+models/checkpoints/*
+!models/checkpoints/.gitkeep
 
 ################################################################
 # Latex                                                        #

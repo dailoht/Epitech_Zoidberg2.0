@@ -39,7 +39,7 @@ class FPRNormal(keras.metrics.Metric):
     """
     def __init__(self,
                  name='FPR_normal',
-                 labels=tf.constant(['batceria', 'normal', 'virus']),
+                 labels=tf.constant(['bacteria', 'normal', 'virus']),
                  **kwargs):
         """
         Initializes a new instance of the FPRNormal class.
@@ -118,7 +118,7 @@ class Evaluation():
     display=False, digits=2):
         A method that computes the full evaluation metrics.
     """
-    def __init__(self, labels=['batceria', 'normal', 'virus']):
+    def __init__(self, strategy, labels=['bacteria', 'normal', 'virus']):
         """
         Initializes a new instance of the Evaluation class.
 
@@ -126,17 +126,15 @@ class Evaluation():
             labels (list): A list containing the label names for each
                 class. Default is ['bacteria', 'normal', 'virus'].
         """
+        self.strategy = strategy
         self.labels = labels
         self.full_metrics = {
-            'Precision': keras.metrics.Precision(name='Precision'),
-            'Recall': keras.metrics.Recall(name='Recall'),
-            'MCC': MatthewsCorrelationCoefficient(
-                num_classes=3, name='Matthews_coef'
-                ),
-            'FPR normal': FPRNormal(labels=tf.constant(self.labels)),
+            'Precision': keras.metrics.Precision,
+            'Recall': keras.metrics.Recall,
+            'MCC': MatthewsCorrelationCoefficient,
+            'FPR normal': FPRNormal,
         }
-        
-        self.training_metrics = []
+        self.loss_function = 'categorical_crossentropy'
 
     def __decode_one_hot(self, y_true, y_pred):
         """
@@ -204,21 +202,58 @@ class Evaluation():
         Returns:
             list: A list of the selected training metrics.
         """
-        self.training_metrics = []
-        
-        if metrics == 'BASE':
-            self.training_metrics.append(self.full_metrics['MCC'])
+        with self.strategy.scope():
+            if metrics == 'BASE':
+                training_metrics = [
+                    self.full_metrics['MCC'](num_classes=3, name='MCC')
+                ]
 
-        if metrics == 'FULL':
-            self.training_metrics = [
-                metric for metric in self.full_metrics.values()
-            ]
+            if metrics == 'FULL':
+                training_metrics = []
+                for name, metric in self.full_metrics.items():
+                    if name == 'MCC':
+                        training_metrics.append(
+                            metric(num_classes=3, name=name)
+                        )
+                    elif name == 'FPR normal':
+                        training_metrics.append(
+                            metric(
+                                labels=tf.constant(self.labels),
+                                name=name
+                            )
+                        )
+                    else:
+                        training_metrics.append(
+                            metric(name=name)
+                        )
 
-        if isinstance(metrics, list):
-            for metric in metrics:
-                self.training_metrics.append(self.full_metrics[metric])
+            if isinstance(metrics, list):
+                training_metrics = []
 
-        return self.training_metrics
+                for name in metrics:
+                    if name not in self.full_metrics.keys():
+                        warn_message = f"Unexpected given metric : '{name}' "
+                        warn_message += ", accepted metrics are "
+                        warn_message += "Precision, Recall, MCC, FPR Normal"
+                        raise KeyError(warn_message)
+
+                    if name == 'MCC':
+                        training_metrics.append(
+                            self.full_metrics[name](num_classes=3, name=name)
+                        )
+                    elif name == 'FPR normal':
+                        training_metrics.append(
+                            self.full_metrics[name](
+                                labels=tf.constant(self.labels),
+                                name=name
+                            )
+                        )
+                    else:
+                        training_metrics.append(
+                            self.full_metrics[name](name=name)
+                        )
+
+        return training_metrics
 
     def compute_full_metrics(self,
                              y_true_oh, y_pred_oh,
