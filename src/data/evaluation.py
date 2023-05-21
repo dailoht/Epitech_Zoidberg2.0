@@ -320,9 +320,9 @@ class Evaluation():
                                     y_pred,
                                     sample_weight=sample_weight
                                     )
-        fpr_normal_metric = self.full_metrics['FPR normal']
-        fpr_normal_metric.update_state(y_true_oh,
-                                       y_pred_oh,
+        fpr_normal_metric = self.full_metrics['FPR normal']()
+        fpr_normal_metric.update_state(y_true= y_true_oh,
+                                       y_pred = y_pred_oh,
                                        sample_weight=sample_weight
                                        )
         fpr_normal = fpr_normal_metric.result().numpy()

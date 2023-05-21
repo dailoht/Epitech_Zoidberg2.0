@@ -16,6 +16,7 @@ DATA_ROOT_DIR = PROJECT_ROOT_DIR / "data"
 MODEL_ROOT_DIR = PROJECT_ROOT_DIR / "models"
 SRC_ROOT_DIR = PROJECT_ROOT_DIR / "src"
 RESOURCE_DIR = PROJECT_ROOT_DIR / "report" / "resources"
+NOTEBOOK_DIR = PROJECT_ROOT_DIR / "notebooks"
 
 
 class FileManager:
@@ -52,6 +53,7 @@ class FileManager:
         self.model_dir = MODEL_ROOT_DIR
         self.script_dir = SRC_ROOT_DIR
         self.resource_dir = RESOURCE_DIR
+        self.notebook_dir = NOTEBOOK_DIR
         self.raw_data_subdir = self.data_dir / 'raw' / 'chest_Xray'
         self.interim_data_subdir = self.data_dir / 'interim' / 'full'
 
