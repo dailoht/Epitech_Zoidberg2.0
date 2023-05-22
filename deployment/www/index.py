@@ -25,7 +25,7 @@ def upload_file():
     if 'file' not in request.files:
         abort(404)
     file = request.files['file']
-    path = os.path.join('temps/', file.filename)
+    path = ROOT_PATH / 'deployment' / 'www' / 'temps' / file.filename
     file.save(path)
     
     label = 'Une erreur'
