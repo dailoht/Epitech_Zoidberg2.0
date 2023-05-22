@@ -1,8 +1,15 @@
-from flask import Flask, render_template, jsonify, request, abort
 import os
+from flask import Flask, render_template, jsonify, request, abort
+import numpy as np
+import tensorflow as tf
+from tensorflow_addons.metrics import MatthewsCorrelationCoefficient
 
 app = Flask(__name__)
 
+model = tf.keras.models.load_model(
+    '../../models/final_model.h5',
+    custom_objects={'MCC': MatthewsCorrelationCoefficient(num_classes=3, name='MCC')}
+    )
 
 @app.route('/')
 def index():
@@ -16,6 +23,34 @@ def upload_file():
     file = request.files['file']
     path = os.path.join('temps/', file.filename)
     file.save(path)
+    
+    label = 'Une erreur'
+    class_value = get_image_label(path)
+    if class_value == 0:
+        label = 'une pneumonie bactérienne.'
+    elif class_value == 1:
+        label = 'absolument rien !'
+    elif class_value == 2:
+        label = 'une pneumnie virale.'
+
     return jsonify(
-        type=""
+        text=label
     )
+    
+def image_to_tensor(path):
+    image = tf.keras.utils.load_img(
+        path,
+        color_mode="rgb",
+        target_size=(512,512)
+        )
+    numpy_image = np.array(image)
+    
+    return tf.convert_to_tensor([numpy_image])
+    
+def get_image_label(path):
+    input = image_to_tensor(path)
+    
+    output = model.predict(input)
+    
+    return np.argmax(output, axis=1)
+    
