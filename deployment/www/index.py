@@ -1,4 +1,5 @@
 import os
+from pathlib import Path
 from flask import Flask, render_template, jsonify, request, abort
 import numpy as np
 import tensorflow as tf
@@ -6,8 +7,11 @@ from tensorflow_addons.metrics import MatthewsCorrelationCoefficient
 
 app = Flask(__name__)
 
+ROOT_PATH = Path(__file__).parents[2]
+MODEL_PATH = ROOT_PATH / 'models' / 'final_model.h5'
+
 model = tf.keras.models.load_model(
-    '../../models/final_model.h5',
+    MODEL_PATH,
     custom_objects={'MCC': MatthewsCorrelationCoefficient(num_classes=3, name='MCC')}
     )
 

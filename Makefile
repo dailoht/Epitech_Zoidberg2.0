@@ -75,6 +75,12 @@ lint: test_environment
 jupyter: test_environment
 	jupyter-notebook --ip=0.0.0.0
 
+## Start Flask server
+flask: test_environment
+	export FLASK_APP=index
+	export FLASK_ENV=development
+	flask --app deployment/www/index.py run
+
 #################################################################################
 # Self Documenting Commands                                                     #
 #################################################################################

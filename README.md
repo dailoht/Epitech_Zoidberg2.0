@@ -21,7 +21,7 @@ Th directory structure below is widely inspired by the [cookiecutter-data-scienc
 │
 ├── deployment          <- API & Front for model deployment
 │
-├── models              <- Trained models
+├── models              <- Trained models (history, checkpoint, etc.)
 │
 ├── notebooks
 │   ├── data_processing <- Jupyter notebooks for data analysis and
@@ -44,7 +44,7 @@ Th directory structure below is widely inspired by the [cookiecutter-data-scienc
 
 # Visualization with Notebook
 
-Notebooks can be run either with [Google Colab](https://colab.research.google.com/) or in a local environment. Steps below are provided to run them locally. If you want to use Colab, you only need to clone this repo on Colab and upload needed data [Section 4](#31-downloading-data).
+Notebooks can be run either with [Google Colab](https://colab.research.google.com/) or in a local environment. Steps below are provided to run them locally. If you want to use Colab, you need to load this repo on your google drive, change drive folder in notebooks and upload needed data [Section 4](#31-downloading-data).
 
 
 You are going to need python 3.9 and [Anaconda](https://www.anaconda.com/) or Miniconda which is a minimal version of Anaconda. Below, we provide instruction for Miniconda.
@@ -81,6 +81,7 @@ clean-data          Delete all data
 clean-model         Delete all models 
 clean-pyc           Delete all compiled Python files 
 create_environment  Set up python interpreter environment 
+flask                Start Flask server
 jupyter             Start Jupyter Notebook local server 
 lint                Lint using flake8 
 requirements        Install Python Dependencies 
@@ -124,4 +125,13 @@ Go on your browser to work on those jupyters notebooks
 The document in the report folder is written in Latex, we used [Overleaf](https://www.overleaf.com/). Please ask us if you want access to its tex version.  
 Access : [https://www.overleaf.com/project/63fcbca4e88c8a6d5976e9c6](https://www.overleaf.com/project/63fcbca4e88c8a6d5976e9c6)
 
-# Deployment in rust
+# Deployment with Flask
+
+We offer a deployment of the model in a Flask application where you can upload an image and it will output the class of the image.
+
+To start flask server, just run:
+```bash
+make flask
+```
+
+Then go to the address 127.0.0.1:5000 in your web browser.
