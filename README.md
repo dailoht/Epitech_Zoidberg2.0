@@ -127,7 +127,7 @@ Access : [https://www.overleaf.com/project/63fcbca4e88c8a6d5976e9c6](https://www
 
 # Deployment with Flask
 
-We offer a deployment of the model in a Flask application where you can upload an image and it will output the class of the image.
+We offer a deployment of the model in a Flask application where you can upload an image and it will output the class of the image. As the final model is saved and shared, you don't need to run notebooks to launch the server.
 
 To start flask server, just run:
 ```bash
